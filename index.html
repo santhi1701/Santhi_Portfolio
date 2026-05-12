@@ -1,10 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Santhi Kumari - Portfolio</title>
+    <title>Santhi Kumari Muchu — Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #0a0e27;
@@ -19,306 +21,593 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Epilogue', sans-serif; background: var(--primary); color: var(--text); overflow-x: hidden; line-height: 1.6; }
 
-        /* Animated background gradient */
         body::before {
             content: '';
             position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.08) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 20%, rgba(255, 0, 128, 0.05) 0%, transparent 50%);
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at 20% 50%, rgba(0,255,136,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(0,212,255,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 20%, rgba(255,0,128,0.05) 0%, transparent 50%);
             animation: float 20s ease-in-out infinite;
-            z-index: 0;
-            pointer-events: none;
+            z-index: 0; pointer-events: none;
         }
-
         @keyframes float { 0%,100%{transform:translate(0,0) rotate(0deg);} 33%{transform:translate(30px,-30px) rotate(5deg);} 66%{transform:translate(-20px,20px) rotate(-5deg);} }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
 
-        /* Header/Nav */
-        header { padding: 2rem 0; position: sticky; top: 0; background: rgba(10,14,39,0.8); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid rgba(0,255,136,0.1); }
+        /* NAV */
+        header { padding: 1.5rem 0; position: sticky; top: 0; background: rgba(10,14,39,0.85); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(0,255,136,0.1); }
         nav { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 900; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 3s ease-in-out infinite; }
-        @keyframes shimmer { 0%,100%{opacity:1;} 50%{opacity:0.8;} }
+        .logo { font-size: 1.3rem; font-weight: 900; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { color: var(--text); text-decoration: none; font-weight: 600; position: relative; transition: color 0.3s; }
+        .nav-links a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.9rem; position: relative; transition: color 0.3s; }
         .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s; }
         .nav-links a:hover { color: var(--accent); }
         .nav-links a:hover::after { width: 100%; }
 
-        /* Hero Section */
+        /* HERO */
         .hero { min-height: 90vh; display: flex; align-items: center; position: relative; overflow: hidden; }
         .hero-content { max-width: 800px; animation: fadeInUp 1s ease-out; }
-        @keyframes fadeInUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
-        .hero-tag { display:inline-block; padding:0.5rem 1rem; background: rgba(0,255,136,0.1); border: 1px solid var(--accent); border-radius:20px; font-size:0.9rem; margin-bottom:1.5rem; }
-        h1 { font-size:4rem; font-weight:900; line-height:1.1; margin-bottom:1.5rem; }
-        .hero h1 span { background: var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-        .hero-description { font-size:1.3rem; color: var(--text-dim); margin-bottom:2.5rem; }
-        .cta-buttons { display:flex; gap:1rem; }
-        .btn { padding:1rem 2rem; border-radius:8px; text-decoration:none; font-weight:600; transition: all 0.3s; display:inline-block; cursor:pointer; }
-        .btn-primary { background: var(--gradient); color: var(--primary); border:none; }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
+        .hero-tag { display: inline-block; padding: 0.5rem 1.2rem; background: rgba(0,255,136,0.1); border: 1px solid var(--accent); border-radius: 20px; font-size: 0.85rem; margin-bottom: 1.5rem; font-family: 'JetBrains Mono', monospace; color: var(--accent); }
+        h1 { font-size: 4rem; font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-description { font-size: 1.15rem; color: var(--text-dim); margin-bottom: 2.5rem; max-width: 600px; }
+        .cta-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn { padding: 0.9rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s; display: inline-block; cursor: pointer; font-size: 0.95rem; }
+        .btn-primary { background: var(--gradient); color: var(--primary); border: none; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,255,136,0.3); }
         .btn-secondary { background: transparent; color: var(--text); border: 2px solid var(--accent); }
         .btn-secondary:hover { background: rgba(0,255,136,0.1); transform: translateY(-2px); }
 
-        /* Section Titles */
+        /* Hero stats */
+        .hero-stats { display: flex; gap: 3rem; margin-top: 3rem; }
+        .hero-stat-num { font-size: 2rem; font-weight: 900; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+        .hero-stat-label { font-size: 0.8rem; color: var(--text-dim); margin-top: 4px; font-family: 'JetBrains Mono', monospace; }
+
+        /* SECTIONS */
         section { padding: 6rem 0; position: relative; }
-        .section-title { font-size:3rem; font-weight:900; margin-bottom:3rem; display:inline-block; position:relative; }
-        .section-title::after { content: ''; position:absolute; bottom:-10px; left:0; width:60%; height:4px; background: var(--gradient); }
+        .section-title { font-size: 2.8rem; font-weight: 900; margin-bottom: 3rem; display: inline-block; position: relative; }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 60%; height: 4px; background: var(--gradient); }
 
-        /* About Section */
-        .about-content { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
-        .about-text p { font-size:1.1rem; color: var(--text-dim); margin-bottom:1.5rem; }
-        .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:2rem; }
-        .stat-item { text-align:center; padding:1.5rem; background:var(--secondary); border-radius:12px; border:1px solid rgba(0,255,136,0.1); transition: all 0.3s; }
-        .stat-item:hover { transform: translateY(-5px); border-color:var(--accent); box-shadow:0 10px 30px rgba(0,255,136,0.2); }
-        .stat-number { font-size:2.5rem; font-weight:900; background: var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-        .stat-label { color:var(--text-dim); font-size:0.9rem; }
+        /* ABOUT */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+        .about-text p { font-size: 1.05rem; color: var(--text-dim); margin-bottom: 1.2rem; line-height: 1.8; }
+        .about-text p span { color: var(--text); }
+        .about-info { display: flex; flex-direction: column; gap: 1rem; }
+        .about-info-card { background: var(--secondary); border: 1px solid rgba(0,255,136,0.1); padding: 1.2rem 1.5rem; border-radius: 10px; display: flex; align-items: center; gap: 1rem; transition: all 0.3s; }
+        .about-info-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,255,136,0.15); }
+        .about-info-icon { font-size: 1.3rem; min-width: 36px; text-align: center; }
+        .about-info-title { font-weight: 600; font-size: 0.95rem; }
+        .about-info-sub { font-size: 0.8rem; color: var(--text-dim); margin-top: 2px; }
 
-        /* Skills Section */
-        .skills-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:2rem; }
-        .skill-category { background:var(--secondary); padding:2rem; border-radius:12px; border:1px solid rgba(0,255,136,0.1); transition: all 0.3s; }
-        .skill-category:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .skill-category h3 { font-size:1.5rem; margin-bottom:1.5rem; color: var(--accent); }
-        .skill-list { list-style:none; }
-        .skill-list li { padding:0.5rem 0; color: var(--text-dim); position:relative; padding-left:1.5rem; }
-        .skill-list li::before { content:'▹'; position:absolute; left:0; color: var(--accent); }
+        /* SKILLS */
+        .skills-section { background: rgba(26,31,58,0.5); }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .skill-category { background: var(--secondary); padding: 1.75rem; border-radius: 12px; border: 1px solid rgba(0,255,136,0.1); transition: all 0.3s; }
+        .skill-category:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,255,136,0.15); }
+        .skill-category h3 { font-size: 1rem; margin-bottom: 1.2rem; color: var(--accent); font-family: 'JetBrains Mono', monospace; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(0,255,136,0.15); }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-tag { padding: 0.3rem 0.8rem; background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.2); border-radius: 15px; font-size: 0.82rem; color: var(--text-dim); transition: all 0.2s; }
+        .skill-tag:hover { color: var(--accent); border-color: var(--accent); background: rgba(0,255,136,0.1); }
 
-        /* Projects Section */
-        .projects-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(350px,1fr)); gap:2rem; }
-        .project-card { background: var(--secondary); border-radius:12px; overflow:hidden; border:1px solid rgba(0,255,136,0.1); transition: all 0.3s; cursor:pointer; }
-        .project-card:hover { transform: translateY(-10px); border-color:var(--accent); box-shadow:0 20px 40px rgba(0,255,136,0.2); }
-        .project-image { height:200px; background: linear-gradient(135deg, rgba(0,255,136,0.2), rgba(0,212,255,0.2)); display:flex; align-items:center; justify-content:center; font-size:3rem; }
-        .project-content { padding:2rem; }
-        .project-content h3 { font-size:1.5rem; margin-bottom:1rem; }
-        .project-content p { color: var(--text-dim); margin-bottom:1.5rem; }
-        .tech-tags { display:flex; gap:0.5rem; flex-wrap:wrap; }
-        .tech-tag { padding:0.3rem 0.8rem; background: rgba(0,255,136,0.1); border:1px solid var(--accent); border-radius:15px; font-size:0.85rem; font-family:'JetBrains Mono', monospace; }
+        /* PROJECTS */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
+        .project-card { background: var(--secondary); border-radius: 12px; overflow: hidden; border: 1px solid rgba(0,255,136,0.1); transition: all 0.3s; position: relative; }
+        .project-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,255,136,0.2); }
+        .project-banner { height: 130px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; position: relative; overflow: hidden; }
+        .project-banner::before { content: ''; position: absolute; inset: 0; background: inherit; opacity: 0.6; }
+        .project-banner-text { position: relative; z-index: 1; font-size: 2.5rem; }
+        .banner-blue { background: linear-gradient(135deg, rgba(0,255,136,0.25), rgba(0,212,255,0.25)); }
+        .banner-pink { background: linear-gradient(135deg, rgba(255,0,128,0.2), rgba(120,80,255,0.2)); }
+        .banner-amber { background: linear-gradient(135deg, rgba(255,180,0,0.2), rgba(255,100,50,0.2)); }
+        .project-content { padding: 1.75rem; }
+        .project-num { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); margin-bottom: 0.5rem; }
+        .project-content h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .project-content p { color: var(--text-dim); font-size: 0.92rem; margin-bottom: 1.25rem; line-height: 1.7; }
+        .project-features { list-style: none; margin-bottom: 1.5rem; }
+        .project-features li { font-size: 0.85rem; color: var(--text-dim); padding: 3px 0 3px 1.2rem; position: relative; }
+        .project-features li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.8rem; }
+        .tech-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+        .tech-tag { padding: 0.25rem 0.75rem; background: rgba(0,255,136,0.08); border: 1px solid rgba(0,255,136,0.25); border-radius: 12px; font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; color: var(--accent); }
+        .project-links { display: flex; gap: 0.75rem; }
+        .btn-sm { padding: 0.55rem 1.2rem; font-size: 0.82rem; border-radius: 6px; }
 
-        /* Certifications Section */
-        .certifications { background: var(--secondary); border-radius:12px; padding:2rem; border:1px solid rgba(0,255,136,0.1); }
-        .cert-list { list-style:none; padding-left:1rem; }
-        .cert-list li { position:relative; padding-left:1.5rem; margin-bottom:0.8rem; }
-        .cert-list li::before { content:'✔'; position:absolute; left:0; color: var(--accent); }
+        /* INTERNSHIPS */
+        .internships-section { background: rgba(26,31,58,0.5); }
+        .intern-list { display: flex; flex-direction: column; gap: 1.5rem; }
+        .intern-card { background: var(--secondary); border: 1px solid rgba(0,255,136,0.1); border-radius: 12px; padding: 2rem; display: grid; grid-template-columns: 180px 1fr; gap: 2rem; transition: all 0.3s; }
+        .intern-card:hover { border-color: var(--accent); box-shadow: 0 8px 30px rgba(0,255,136,0.12); }
+        .intern-meta { border-right: 1px solid rgba(0,255,136,0.1); padding-right: 2rem; }
+        .intern-company { font-weight: 700; font-size: 1rem; margin-bottom: 0.3rem; }
+        .intern-period { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); }
+        .intern-role { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .intern-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 1rem; }
+        .intern-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .intern-tag { padding: 0.25rem 0.75rem; background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.15); border-radius: 10px; font-size: 0.78rem; color: var(--text-dim); }
 
-        /* Contact Section */
-        .contact-content { max-width:600px; margin:0 auto; text-align:center; }
-        .contact-content p { font-size:1.2rem; color: var(--text-dim); margin-bottom:2rem; }
-        .social-links { display:flex; justify-content:center; gap:1rem; margin-top:2rem; flex-wrap:wrap; list-style:none; padding:0; }
-        .social-link { width:60px; height:60px; border-radius:50%; background: var(--secondary); border:2px solid rgba(0,255,136,0.2); display:flex; align-items:center; justify-content:center; text-decoration:none; color: var(--text); font-size:1.5rem; transition:all 0.3s; }
-        .social-link:hover { border-color: var(--accent); background: rgba(0,255,136,0.1); transform: translateY(-5px); }
-        .social-link i { margin-right:0.3rem; }
+        /* EDUCATION */
+        .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .edu-card { background: var(--secondary); border: 1px solid rgba(0,255,136,0.1); border-radius: 12px; padding: 1.75rem; transition: all 0.3s; }
+        .edu-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,255,136,0.15); }
+        .edu-year { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); margin-bottom: 0.75rem; }
+        .edu-school { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.3; }
+        .edu-degree { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 1rem; line-height: 1.5; }
+        .edu-score { display: inline-block; padding: 0.3rem 1rem; background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.3); border-radius: 15px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--accent); font-weight: 600; }
 
-        /* Footer */
-        footer { padding:3rem 0; text-align:center; border-top:1px solid rgba(0,255,136,0.1); color: var(--text-dim); }
+        /* CERTS */
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+        .cert-card { background: var(--secondary); border: 1px solid rgba(0,255,136,0.1); border-radius: 10px; padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 1rem; transition: all 0.3s; }
+        .cert-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .cert-dot { width: 10px; height: 10px; background: var(--accent); border-radius: 2px; flex-shrink: 0; }
+        .cert-name { font-size: 0.9rem; font-weight: 600; }
+        .cert-issuer { font-size: 0.78rem; color: var(--text-dim); margin-top: 2px; }
 
-        /* Responsive */
-        @media (max-width:768px) {
-            h1 { font-size:3rem; }
-            .section-title { font-size:2rem; }
-            .about-content { grid-template-columns:1fr; }
-            .stats { grid-template-columns:1fr; }
-            .nav-links { gap:1rem; }
-            .cta-buttons { flex-direction:column; }
+        /* CONTACT */
+        .contact-content { max-width: 600px; margin: 0 auto; text-align: center; }
+        .contact-content p { font-size: 1.1rem; color: var(--text-dim); margin-bottom: 2rem; }
+        .contact-email { display: inline-block; font-size: 1.1rem; color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 2rem; text-decoration: none; border-bottom: 1px solid rgba(0,255,136,0.3); padding-bottom: 4px; transition: opacity 0.2s; }
+        .contact-email:hover { opacity: 0.7; }
+        .social-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; list-style: none; padding: 0; margin-top: 2rem; }
+        .social-link { width: 56px; height: 56px; border-radius: 50%; background: var(--secondary); border: 2px solid rgba(0,255,136,0.2); display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--text); font-size: 1.3rem; transition: all 0.3s; }
+        .social-link:hover { border-color: var(--accent); background: rgba(0,255,136,0.1); transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,255,136,0.2); }
+
+        /* FOOTER */
+        footer { padding: 2.5rem 0; text-align: center; border-top: 1px solid rgba(0,255,136,0.1); color: var(--text-dim); font-size: 0.9rem; }
+        footer span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+
+        /* ANIMATIONS */
+        .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            .section-title { font-size: 2rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .edu-grid { grid-template-columns: 1fr; }
+            .intern-card { grid-template-columns: 1fr; gap: 0.5rem; }
+            .intern-meta { border-right: none; border-bottom: 1px solid rgba(0,255,136,0.1); padding-right: 0; padding-bottom: 1rem; }
+            .nav-links { display: none; }
+            .hero-stats { gap: 1.5rem; }
+            footer { font-size: 0.8rem; }
         }
-
-        /* Scroll animations */
-        .fade-in { opacity:0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
-        .fade-in.visible { opacity:1; transform: translateY(0); }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">Santhi Kumari Muchu</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#contact">Contact</a></li>
+
+<!-- NAV -->
+<header>
+    <nav class="container">
+        <div class="logo">Santhi Kumari Muchu</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#internships">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-tag">✦ Available for Opportunities — Fresher</div>
+            <h1>Hi, I'm <span>Santhi Kumari Muchu</span></h1>
+            <p class="hero-description">
+                A motivated AI & Data Science graduate who loves building full-stack web applications and machine learning solutions. I turn ideas into working products — clean, scalable, and user-focused.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+            <div class="hero-stats">
+                <div>
+                    <div class="hero-stat-num">8.92</div>
+                    <div class="hero-stat-label">CGPA</div>
+                </div>
+                <div>
+                    <div class="hero-stat-num">3+</div>
+                    <div class="hero-stat-label">Projects Built</div>
+                </div>
+                <div>
+                    <div class="hero-stat-num">2+</div>
+                    <div class="hero-stat-label">Internships</div>
+                </div>
+                <div>
+                    <div class="hero-stat-num">3+</div>
+                    <div class="hero-stat-label">Certifications</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+        <h2 class="section-title fade-in">About Me</h2>
+        <div class="about-grid fade-in">
+            <div class="about-text">
+                <p>I'm a <span>fresh B.Tech graduate in Artificial Intelligence & Data Science</span> from Pace Institute of Technology and Sciences, Andhra Pradesh — with a strong academic record and a genuine curiosity for technology.</p>
+                <p>My work spans <span>full-stack web development</span> with Python and Django, and <span>machine learning</span> using NLP, TF-IDF, and Scikit-learn. I enjoy the full spectrum — from designing clean, responsive UIs to building intelligent backends that make things smart.</p>
+                <p>I'm currently <span>open to opportunities</span> in software development, Python/Django development, or ML engineering where I can contribute from day one and keep growing.</p>
+            </div>
+            <div class="about-info">
+                <div class="about-info-card">
+                    <div class="about-info-icon">🎓</div>
+                    <div>
+                        <div class="about-info-title">B.Tech — AI & Data Science</div>
+                        <div class="about-info-sub">Pace Institute of Technology · 2022–2026 · CGPA 8.92</div>
+                    </div>
+                </div>
+                <div class="about-info-card">
+                    <div class="about-info-icon">📍</div>
+                    <div>
+                        <div class="about-info-title">Andhra Pradesh, India</div>
+                        <div class="about-info-sub">Open to remote & on-site opportunities</div>
+                    </div>
+                </div>
+                <div class="about-info-card">
+                    <div class="about-info-icon">💡</div>
+                    <div>
+                        <div class="about-info-title">Interests</div>
+                        <div class="about-info-sub">Web Development · Machine Learning · NLP · Open Source</div>
+                    </div>
+                </div>
+                <div class="about-info-card">
+                    <div class="about-info-icon">📞</div>
+                    <div>
+                        <div class="about-info-title">+91 8919731975</div>
+                        <div class="about-info-sub">muchusanthikumari13@gmail.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-section">
+    <div class="container">
+        <h2 class="section-title fade-in">Skills & Technologies</h2>
+        <div class="skills-grid">
+            <div class="skill-category fade-in">
+                <h3>Programming</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">OOP</span>
+                </div>
+            </div>
+            <div class="skill-category fade-in">
+                <h3>Web Development</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">Bootstrap</span>
+                    <span class="skill-tag">REST APIs</span>
+                </div>
+            </div>
+            <div class="skill-category fade-in">
+                <h3>Machine Learning & NLP</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Scikit-learn</span>
+                    <span class="skill-tag">TF-IDF</span>
+                    <span class="skill-tag">Cosine Similarity</span>
+                    <span class="skill-tag">NLP Basics</span>
+                </div>
+            </div>
+            <div class="skill-category fade-in">
+                <h3>Data Analysis</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">Data Preprocessing</span>
+                    <span class="skill-tag">Visualization</span>
+                </div>
+            </div>
+            <div class="skill-category fade-in">
+                <h3>Database</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">SQLite</span>
+                    <span class="skill-tag">SQL</span>
+                </div>
+            </div>
+            <div class="skill-category fade-in">
+                <h3>Tools & Platforms</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">GitHub</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">VS Code</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <div class="container">
+        <h2 class="section-title fade-in">Featured Projects</h2>
+        <div class="projects-grid">
+
+            <!-- PrepVault -->
+            <div class="project-card fade-in">
+                <div class="project-banner banner-blue">
+                    <span class="project-banner-text">🧠</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-num">PROJECT 01</div>
+                    <h3>PrepVault</h3>
+                    <p>A smart full-stack interview preparation platform with quizzes, learning resources, performance tracking, and role-based dashboards.</p>
+                    <ul class="project-features">
+                        <li>User authentication & role-based access control</li>
+                        <li>Personalized dashboards per user role</li>
+                        <li>Admin panel for content & user management</li>
+                        <li>Responsive UI with Bootstrap & JavaScript</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">Bootstrap</span>
+                        <span class="tech-tag">SQLite</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/santhi1701/PrepVault" target="_blank" class="btn btn-primary btn-sm"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SkillWeaver -->
+            <div class="project-card fade-in">
+                <div class="project-banner banner-pink">
+                    <span class="project-banner-text">🤖</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-num">PROJECT 02</div>
+                    <h3>SkillWeaver</h3>
+                    <p>An AI-powered role-based resume analyzer that matches resumes to job descriptions using NLP, generating skill match scores and improvement suggestions.</p>
+                    <ul class="project-features">
+                        <li>TF-IDF vectorization & cosine similarity scoring</li>
+                        <li>Text extraction and preprocessing pipeline</li>
+                        <li>Skill gap analysis with actionable suggestions</li>
+                        <li>Role-based resume evaluation logic</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">TF-IDF</span>
+                        <span class="tech-tag">NLP</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/santhi1701/SkillWeaver" target="_blank" class="btn btn-primary btn-sm"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vivvah Vedika -->
+            <div class="project-card fade-in">
+                <div class="project-banner banner-amber">
+                    <span class="project-banner-text">💍</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-num">PROJECT 03</div>
+                    <h3>Vivvah Vedika</h3>
+                    <p>A beautiful, fully responsive static wedding website with elegant design, smooth animations, and a warm user experience.</p>
+                    <ul class="project-features">
+                        <li>Fully responsive across all devices</li>
+                        <li>Smooth scroll animations and transitions</li>
+                        <li>Clean, elegant visual design</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://santhi1701.github.io/Vivaah-Vedika/" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- INTERNSHIPS -->
+<section id="internships" class="internships-section">
+    <div class="container">
+        <h2 class="section-title fade-in">Internship Experience</h2>
+        <div class="intern-list">
+
+            <div class="intern-card fade-in">
+                <div class="intern-meta">
+                    <div class="intern-company">42 Learn</div>
+                    <div class="intern-period">2024</div>
+                </div>
+                <div>
+                    <div class="intern-role">Full Stack Development Intern — MERN</div>
+                    <p class="intern-desc">Gained hands-on experience in frontend development using HTML, CSS, and JavaScript, integrating UI components with backend APIs. Built responsive UI components and collaborated with the team on full-stack web features.</p>
+                    <div class="intern-tags">
+                        <span class="intern-tag">HTML</span>
+                        <span class="intern-tag">CSS</span>
+                        <span class="intern-tag">JavaScript</span>
+                        <span class="intern-tag">REST APIs</span>
+                        <span class="intern-tag">MERN Stack</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="intern-card fade-in">
+                <div class="intern-meta">
+                    <div class="intern-company">EduSkills</div>
+                    <div class="intern-period">2024</div>
+                </div>
+                <div>
+                    <div class="intern-role">Machine Learning & Data Science Intern</div>
+                    <p class="intern-desc">Applied NumPy and Pandas for data analysis and visualization on real datasets. Built and evaluated ML models using Scikit-learn with full preprocessing pipelines. Worked on NLP tasks and integrated Python with SQL for structured data handling.</p>
+                    <div class="intern-tags">
+                        <span class="intern-tag">Python</span>
+                        <span class="intern-tag">NumPy</span>
+                        <span class="intern-tag">Pandas</span>
+                        <span class="intern-tag">Scikit-learn</span>
+                        <span class="intern-tag">NLP</span>
+                        <span class="intern-tag">SQL</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+    <div class="container">
+        <h2 class="section-title fade-in">Education</h2>
+        <div class="edu-grid fade-in">
+            <div class="edu-card">
+                <div class="edu-year">2022 – 2026</div>
+                <div class="edu-school">Pace Institute of Technology and Sciences</div>
+                <div class="edu-degree">B.Tech — Artificial Intelligence & Data Science</div>
+                <span class="edu-score">CGPA: 8.92</span>
+            </div>
+            <div class="edu-card">
+                <div class="edu-year">2020 – 2022</div>
+                <div class="edu-school">Sri Gayathri Junior College</div>
+                <div class="edu-degree">Intermediate — Mathematics, Physics, Chemistry</div>
+                <span class="edu-score">94%</span>
+            </div>
+            <div class="edu-card">
+                <div class="edu-year">2019 – 2020</div>
+                <div class="edu-school">Sri Pragathi High School</div>
+                <div class="edu-degree">Secondary Schooling</div>
+                <span class="edu-score">99%</span>
+            </div>
+        </div>
+
+        <!-- Certifications -->
+        <div style="margin-top: 4rem;">
+            <h3 class="section-title fade-in" style="font-size: 2rem;">Certifications</h3>
+            <div class="cert-grid fade-in">
+                <div class="cert-card">
+                    <div class="cert-dot"></div>
+                    <div>
+                        <div class="cert-name">Data Analytics Essential</div>
+                        <div class="cert-issuer">Cisco</div>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-dot"></div>
+                    <div>
+                        <div class="cert-name">Machine Learning & Data Science</div>
+                        <div class="cert-issuer">EduSkills (Virtual Internship)</div>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-dot"></div>
+                    <div>
+                        <div class="cert-name">Python Basics for Data Science</div>
+                        <div class="cert-issuer">EDX</div>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-dot"></div>
+                    <div>
+                        <div class="cert-name">Full Stack Web Development</div>
+                        <div class="cert-issuer">42 Learn</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-content">
+            <h2 class="section-title fade-in" style="display:block; text-align:center;">Let's Connect</h2>
+            <p class="fade-in">I'm actively looking for opportunities — whether it's a job, internship, or just a conversation about tech. Don't hesitate to reach out!</p>
+            <a href="mailto:muchusanthikumari13@gmail.com" class="contact-email fade-in">
+                muchusanthikumari13@gmail.com
+            </a>
+            <br>
+            <a href="mailto:muchusanthikumari13@gmail.com" class="btn btn-primary fade-in">
+                <i class="fas fa-envelope"></i>&nbsp; Say Hello
+            </a>
+            <ul class="social-links fade-in">
+                <li>
+                    <a href="mailto:muchusanthikumari13@gmail.com" class="social-link" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/santhi1701" target="_blank" class="social-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/santhi-kumari-muchu-b09762376/" target="_blank" class="social-link" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="tel:+918919731975" class="social-link" title="Phone">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                </li>
             </ul>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-tag">Aspiring Software Engineer • Fresher</div>
-                <h1>Hi, I'm <span>Santhi Kumari Muchu</span></h1>
-                <p class="hero-description">I build full-stack web applications using HTML, CSS, JavaScript, Django, and more. Passionate about creating scalable and user-friendly solutions.</p>
-                <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
-            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title fade-in">About Me</h2>
-            <div class="about-content">
-                <div class="about-text fade-in">
-                    <p>I'm a fresher passionate about building web applications that solve real-world problems. I specialize in front-end and back-end development with Django, JavaScript, HTML, and CSS.</p>
-                    
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <p>© 2026 <span>Santhi Kumari Muchu</span> · Built with passion and code ✦</p>
+    </div>
+</footer>
 
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title fade-in">Skills & Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-category fade-in">
-                    <h3>Frontend</h3>
-                    <ul class="skill-list">
-                        <li>HTML5 & CSS3</li>
-                        <li>JavaScript</li>
-                        <li>Responsive Design</li>
-                    </ul>
-                </div>
-                <div class="skill-category fade-in">
-                    <h3>Programming & Backend</h3>
-                    <ul class="skill-list">
-                        <li>Python</li>
-                        <li>SQL</li>
-                        <li>OOPs</li>
-                        <li>Django (Python)</li>
-                        <li>MySQL / SQLite</li>
-                    </ul>
-                </div>
-                <div class="skill-category fade-in">
-                    <h3>Tools & Others</h3>
-                    <ul class="skill-list">
-                        <li>Git & GitHub</li>
-                        <li>VS Code</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title fade-in">Featured Projects</h2>
-            <div class="projects-grid">
-
-                <!-- Vivvah Vedika -->
-                <div class="project-card fade-in">
-                    <div class="project-content">
-                        <h3>Vivvah Vedika</h3>
-                        <p>A beautiful static wedding website built using HTML, CSS, and JavaScript.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                        <div class="project-links" style="margin-top:10px;">
-                            <a href="https://santhi1701.github.io/Vivaah-Vedika/" target="_blank" class="btn btn-primary">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PrepVault -->
-                <div class="project-card fade-in">
-                    <div class="project-content">
-                        <h3>PrepVault</h3>
-                        <p>Django-based quiz platform with performance tracking and question management.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Django</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                        </div>
-                        <div class="project-links" style="margin-top:10px;">
-                            <a href="https://github.com/santhi1701/PrepVault" target="_blank" class="btn btn-primary">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SkillWeaver -->
-                <div class="project-card fade-in">
-                    <div class="project-content">
-                        <h3>SkillWeaver</h3>
-                        <p>An AI-based role-specific resume analyzer that parses resumes, evaluates fit, and gives actionable suggestions for freshers.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">Django</span>
-                            <span class="tech-tag">Python</span>
-                        </div>
-                        <div class="project-links" style="margin-top:10px;">
-                            <a href="https://github.com/santhi1701/SkillWeaver" target="_blank" class="btn btn-primary">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications -->
-    <section id="certifications">
-        <div class="container">
-            <h2 class="section-title fade-in">Certifications</h2>
-            <div class="certifications fade-in">
-                <ul class="cert-list">
-                    <li>Responsive Web Design – FreeCodeCamp</li>
-                    <li>Full-Stack Web Development Intern - 42 Learn</li>
-                    
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-        <div class="container">
-            <div class="contact-content">
-                <h2 class="section-title fade-in">Let's Connect</h2>
-                <p class="fade-in">I'm open to new opportunities and collaborations. Reach out to discuss projects or just to say hi!</p>
-                <a href="mailto:santhikumari1701@gmail.com" class="btn btn-primary fade-in"><i class="fas fa-envelope"></i> Say Hello</a>
-                <ul class="social-links fade-in">
-                    <li><a href="mailto:santhikumari1701@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a></li>
-                    <li><a href="https://github.com/santhi1701" class="social-link" title="GitHub"><i class="fab fa-github"></i></a></li>
-                    <li><a href="https://www.linkedin.com/in/santhi-kumari-muchu-b09762376/" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Santhi Kumari. Built with passion and code.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
+<script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+    });
 
-        // Scroll animations
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, observerOptions);
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    </script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Active nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 200) current = s.id;
+        });
+        navLinks.forEach(a => {
+            a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+        });
+    });
+</script>
 </body>
 </html>
